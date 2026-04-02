@@ -43,10 +43,17 @@ ________________________________________________________________________________
 **Challenges Faced**
 - writing correct filter conditions
 - Understanding conversion from SQL to PySpark
-________________________________________________________________________________________________________________________________________________________
+__________________________________________________________________________________________________________________________________________________________
 
 **Learnings**
 - Basics of PySpark DataFrames
 - Conversation of SQL queries into PySpark
 - Importance of filtering and selcting data
 - Performing aggregations using groupBy
+_____________________________________________________________________________________________________________________________________________________________
+
+**Files in this Folder**
+- phase1_problem_statement.pdf-Problem description
+- sql_queries.py-SQL queries implemntation
+- pyspark_code.py-Pyspark implementation
+- outputs/-Output Screenshots
