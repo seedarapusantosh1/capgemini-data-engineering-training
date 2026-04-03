@@ -12,17 +12,17 @@ INSERT INTO customers VALUES
 
  # Implementing the codes
 - Show all the customers**
-    SELECT * 
-     FROM customers;
+    SELECT * FROM customers;
   
 - Show customers  from Chennai
-  customers.filter("city = 'Chennai'").show()
+     SELECT * FROM customers WHERE city = 'Chennai';
 
 - Show customers with age> 25
-  customers.filter(customers.age > 25).show()
+  SELECT * FROM customers WHERE age > 25;
 
 - Show inly customer_name and city
-   customers.select("customer_name", "city").show()
+   SELECT customer_name, city FROM customers;
 
 - count customers city-wise
-   customers.groupBy("city").count().show()
+  SELECT city, COUNT(*) AS total_customers FROM customers
+  GROUP BY city;
