@@ -17,7 +17,7 @@ Codes:
   display(cus_amount)
 
 3. Find repeat customers (>2 orders)
-  cus_amount= customers.join(sales, on="customer_id").groupBy(concat(col("first_name"),col("last_name")).alias("name")).agg(count(sales["sale_id"]).alias("total_orders")).filter(col("total_orders")>1)
+  cus_amount= customers.join(sales, on="customer_id").groupBy(concat_ws(" ",col("first_name"),col("last_name")).alias("name")).agg(count(sales["sale_id"]).alias("total_orders")).filter(col("total_orders")>1)
   display(cus_amount)
 
 4. Find highest spending customer in each city
