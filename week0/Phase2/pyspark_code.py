@@ -49,23 +49,23 @@ customers = spark.createDataFrame(customers_data, ["customer_id", "first_name", 
 sales = spark.createDataFrame(sales_data, ["sale_id", "customer_id", "product_id","sale_date", "quantity", "total_amount"])
 
 # codes
-  - **Total order amount for each customer**
+    1- Total order amount for each customer
                customers.join(sales, "customer_id").groupBy("customer_id", "first_name").sum("total_amount").show()
                         
-    - Top 3 customers by total spend 
+    2- Top 3 customers by total spend 
             customers.join(sales, "customer_id").groupBy("customer_id", "first_name").sum("total_amount") .orderBy(col("sum(total_amount)").desc()).show(3)
 
-    - Customers with no orders
+    3- Customers with no orders
             customers.join(sales, "customer_id", "left").filter(sales.customer_id.isNull()).show()
 
-    - City-wise total revenue
+    4- City-wise total revenue
             customers.join(sales, "customer_id").groupBy("city").agg(sum("total_amount").alias("total_revenue")).show()
 
-    - Average order amount per customer
+    5- Average order amount per customer
           sales.groupBy("customer_id").agg(avg("total_amount").alias("avg_amount")).show()
 
-    -  Customers with more than one order
+    6-  Customers with more than one order
            sales.groupBy("customer_id").agg(count("sale_id").alias("order_count")).filter("order_count > 1").show()
 
-    -  Sort customers by total spend descending
+    7-  Sort customers by total spend descending
             customers.join(sales, "customer_id").groupBy("first_name").agg(sum("total_amount").alias("total_spend")).orderBy(col("total_spend").desc()).show()
