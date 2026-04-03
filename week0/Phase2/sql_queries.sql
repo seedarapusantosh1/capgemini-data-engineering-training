@@ -33,14 +33,14 @@ INSERT INTO orders (order_id, customer_id, amount, order_date) VALUES
 
 Queries:
 
- - Total order amount for each customer
+ 1- Total order amount for each customer
   SELECT c.customer_name, SUM(o.amount) AS total_amount
   FROM customers c
   JOIN orders o 
   ON c.customer_id=o.customer_id
   GROUP BY c.customer_name
   
--  Top 3 customers by total spend
+2- Top 3 customers by total spend
   SELECT c.customer_name, SUM(o.amount) AS total_amount
   FROM customers c
   JOIN orders o 
@@ -48,26 +48,26 @@ Queries:
   GROUP BY c.customer_name
   ORDER BY total_amount DESC LIMIT 3
 
--  Customers with no orders
+3- Customers with no orders
   SELECT *
   FROM customers c
   WHERE NOT EXISTS ( SELECT 1 FROM orders o WHERE o.customer_id=c.customer_id)
 
-- City-wise total revenue
+4- City-wise total revenue
   SELECT c.city, SUM(o.amount) AS total_amount
   FROM customers c
   JOIN orders o 
   ON c.customer_id=o.customer_id
   GROUP BY c.city
 
-  - Average order amount per customer
+ 5- Average order amount per customer
   SELECT c.customer_name, AVG(o.amount) AS total_amount
   FROM customers c
   JOIN orders o 
   ON c.customer_id=o.customer_id
   GROUP BY c.customer_name
 
-- Customers with more than one order
+6- Customers with more than one order
   SELECT c.customer_name, COUNT(o.order_id) AS m_orders
   FROM customers c
   JOIN orders o 
@@ -75,7 +75,7 @@ Queries:
   GROUP BY c.customer_name
   HAVING m_orders>1
 
-- Sort customers by total spend descending
+7- Sort customers by total spend descending
   SELECT c.customer_name, SUM(o.amount) AS total_amount
   FROM customers c
   JOIN orders o 
