@@ -49,7 +49,7 @@ customers = spark.createDataFrame(customers_data, ["customer_id", "first_name", 
 sales = spark.createDataFrame(sales_data, ["sale_id", "customer_id", "product_id","sale_date", "quantity", "total_amount"])
 
 # codes
-   **- Total order amount for each customer**
+  - **Total order amount for each customer**
                customers.join(sales, "customer_id").groupBy("customer_id", "first_name").sum("total_amount").show()
                         
     - Top 3 customers by total spend 
