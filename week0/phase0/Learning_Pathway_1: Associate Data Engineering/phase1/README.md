@@ -17,11 +17,11 @@ ________________________________________________________________________________
 ______________________________________________________________________________________________________________________________________________________
 
 **Approach**
-- Created the ciustomers table using SQL
-- Inserted simple data into the table
-- Wrote SQL qureies to solve each problem
-- Uesd clauses like **WHERE**,**GROUP BY** and aggregate function **COUNT()**
-- Converted SQL queries into PySpark DataFrame OPerations
+-  At first created the customers table using SQL
+-  After inserted simple data into the table
+-  Then wrote SQL qureies to solve each problem
+-  And used clauses like **WHERE**,**GROUP BY** and aggregate function **COUNT()**
+-  Finally converted SQL queries into PySpark DataFrame OPerations
 ________________________________________________________________________________________________________________________________________________________
 
 **Key Tranformations**
