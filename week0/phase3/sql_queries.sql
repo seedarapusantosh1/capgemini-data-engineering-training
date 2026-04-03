@@ -38,3 +38,46 @@ INSERT INTO sales VALUES
 (5, 3, 5, '2024-01-17', 2, 49.98);
 
 
+
+-- 1. Daily sales
+
+SELECT sale_date, SUM(total_amount) AS daily_sales
+FROM sales
+GROUP BY sale_date;
+
+-- 2. City-wise revenue
+
+SELECT c.city, SUM(s.total_amount) AS total_revenue
+FROM customers c
+JOIN sales s
+ON c.customer_id = s.customer_id
+GROUP BY c.city;
+
+-- 3. Repeat customers (>2 orders)
+
+  SELECT CONCAT(c.first_name," ",last_name) as cus_name,COUNT(s.sale_id) AS total_orders
+  FROM customers c
+  JOIN sales s
+  ON c.customer_id=s.customer_id
+  GROUP BY cus_name
+  HAVING total_orders>1
+
+-- 4. Highest spending customer in each city
+
+SELECT c.city, c.first_name, SUM(s.total_amount) AS total_spend
+FROM customers c
+JOIN sales s
+ON c.customer_id = s.customer_id
+GROUP BY c.city, c.first_name
+ORDER BY c.city, total_spend DESC;
+
+-- 5. Final reporting table
+
+SELECT c.customer_id, c.first_name, c.city,
+       SUM(s.total_amount) AS total_spend,
+       COUNT(s.sale_id) AS order_count
+FROM customers c
+JOIN sales s
+ON c.customer_id = s.customer_id
+GROUP BY c.customer_id, c.first_name, c.city;
+
