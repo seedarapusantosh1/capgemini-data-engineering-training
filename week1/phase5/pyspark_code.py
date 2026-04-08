@@ -4,11 +4,17 @@ print('Setup complete')
 
 display(dbutils.fs.ls('/Volumes/workspace/default/phase5'))
 #Loading datasets
-orders = spark.read.csv('/Volumes/workspace/default/phase5/olist_orders_dataset.csv', header=True, inferSchema=True).show()
-order_items = spark.read.csv('/Volumes/workspace/default/phase5/olist_order_items_dataset.csv', header=True, inferSchema=True).show()
-customers = spark.read.csv('/Volumes/workspace/default/phase5/olist_customers_dataset.csv', header=True, inferSchema=True).show()
-products = spark.read.csv('/Volumes/workspace/default/phase5/olist_products_dataset.csv', header=True, inferSchema=True).show()
-payments = spark.read.csv('/Volumes/workspace/default/phase5/olist_order_payments_dataset.csv', header=True, inferSchema=True).show()
+orders = spark.read.csv('/Volumes/workspace/default/phase5/olist_orders_dataset.csv', header=True, inferSchema=True)
+order_items = spark.read.csv('/Volumes/workspace/default/phase5/olist_order_items_dataset.csv', header=True, inferSchema=True)
+customers = spark.read.csv('/Volumes/workspace/default/phase5/olist_customers_dataset.csv', header=True, inferSchema=True)
+products = spark.read.csv('/Volumes/workspace/default/phase5/olist_products_dataset.csv', header=True, inferSchema=True)
+payments = spark.read.csv('/Volumes/workspace/default/phase5/olist_order_payments_dataset.csv', header=True, inferSchema=True)
+
+display(orders)
+display(order_items)
+display(customers)
+display(products)
+display(payments)
 
 orders.select([count(when(col(c).isNull(), c)).alias(c) for c in orders.columns]).show()
 print('Orders:', orders.count())
